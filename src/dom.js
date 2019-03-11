@@ -13,10 +13,13 @@ const num = 1000
 const width = 500
 const height = 500
 
-let bunnies = new Array(num).fill(0).map(() => ({
-  x: random(0, width),
-  y: random(0, height)
-}))
+const createBunny = () => ({
+  x: random(0, width, true),
+  y: random(0, height, true),
+  scale: random(0.5, 2.5)
+})
+
+let bunnies = new Array(num).fill(0).map(createBunny)
 
 const appOpts = {
   background: 0x404040
@@ -24,7 +27,7 @@ const appOpts = {
 
 const Img = styled.div.attrs(props => ({
   style: {
-    transform: `translate3d(${props.x}px, ${props.y}px, 0px)`
+    transform: `translate3d(${props.x}px, ${props.y}px, 0px) scale(${props.scale})`
   }
 }))`
   position: absolute;
@@ -33,15 +36,20 @@ const Img = styled.div.attrs(props => ({
   background-image: url(${bunnySprite});
 `
 
+const Text = styled('span')`
+  position: absolute;
+  top: ${height + 100}px;
+`
+
 const App = ({ bunnies }) => {
   return (
     <>
       {
-        bunnies.map(({ x, y }, i) => (
-          <Img key={i} x={x} y={y} />
+        bunnies.map(({ x, y, scale }, i) => (
+          <Img key={i} x={x} y={y} scale={scale} />
         ))
       }
-      <div>{`number of bunnies: ${num}`}</div>
+      <Text>{`number of bunnies: ${num}`}</Text>
     </>
   )
 }
@@ -55,10 +63,7 @@ render(
 )
 
 document.addEventListener('keydown', () => {
-  bunnies = bunnies.map(() => ({
-    x: random(0, width, true),
-    y: random(0, height, true)
-  }))
+  bunnies = bunnies.map(createBunny)
 
   render(
     <>
