@@ -18,7 +18,8 @@ const height = 500
 const createBunny = () => ({
   x: random(0, width, true),
   y: random(0, height, true),
-  scale: random(0.5, 2.5)
+  scale: random(0.5, 2.5),
+  color: Math.random() * 0xFFFFFF
 })
 
 let bunnies = new Array(num).fill(0).map(createBunny)
@@ -27,25 +28,14 @@ const appOpts = {
   background: 0x404040
 }
 
-const textStyle = new window.PIXI.TextStyle({
-  align: 'center',
-  fontFamily: '"Source Sans Pro", Helvetica, sans-serif',
-  fontSize: 23,
-  fontWeight: 400,
-  fill: ['#ffffff'], // gradient
-  stroke: null,
-  strokeThickness: 5
-})
-
 const App = ({ bunnies }) => {
   return (
     <>
       <Stage width={500} height={500} options={appOpts}>
         <Container>
           {
-            bunnies.map(({ x, y, scale }, i) => (
-              <Sprite key={i} image={bunnySprite} x={x} y={y} scale={scale} />
-              // <Text key={i} text={'#'} x={x} y={y} style={textStyle} />
+            bunnies.map(({ x, y, scale, color }, i) => (
+              <Sprite key={i} image={bunnySprite} x={x} y={y} scale={scale} tint={color} />
             ))
           }
         </Container>
@@ -74,15 +64,3 @@ document.addEventListener('keydown', () => {
     document.querySelector('.js-main')
   )
 })
-
-// setInterval(() => {
-//   bunnies = bunnies.map(createBunny)
-//
-//   render(
-//     <>
-//       <App bunnies={bunnies} />
-//       <FPS />
-//     </>,
-//     document.querySelector('.js-main')
-//   )
-// }, 200)
