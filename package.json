@@ -45,7 +45,7 @@
     "@inlet/react-pixi": "^0.5.0",
     "eventemitter3": "^3.1.0",
     "fps-now": "^3.1.1",
-    "lodash": "^4.17.11",
+    "lodash": "^4.17.13",
     "most": "^1.7.3",
     "pixi.js": "^4.8.5",
     "prop-types": "^15.7.1",
