@@ -27,13 +27,13 @@ const appOpts = {
 
 const Img = styled.div.attrs(props => ({
   style: {
-    transform: `translate3d(${props.x}px, ${props.y}px, 0px) scale(${props.scale})`
+    transform: `translate3d(${props.x}px, ${props.y}px, 0px) scale(${props.scale})`,
+    backgroundImage: `url(${bunnySprite})`
   }
 }))`
   position: absolute;
   width: 26px;
   height: 37px;
-  background-image: url(${bunnySprite});
 `
 
 const Text = styled('span')`
