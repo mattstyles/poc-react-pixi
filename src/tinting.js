@@ -12,8 +12,8 @@ import bunnySprite from './bunny.png'
 window.PIXI.settings.SCALE_MODE = window.PIXI.SCALE_MODES.NEAREST
 
 const num = 1000
-const width = 500
-const height = 500
+const width = 1000
+const height = 800
 
 const createBunny = () => ({
   x: random(0, width, true),

@@ -1,7 +1,9 @@
 
 import React, { Fragment } from 'react'
 import { render } from 'react-dom'
-import { Stage, Sprite, Container, Text } from '@inlet/react-pixi'
+import {
+  Stage, Sprite, Container, Text
+} from '@inlet/react-pixi/dist/react-pixi.module'
 import { random } from 'lodash'
 import FPS from 'fps-now/react'
 
